@@ -27,7 +27,6 @@ var respond = function(from,to,req,res,next) {
 			res.send(err);
 		} else {
 			if(data === null) {
-				console.log("Not cached");
 					gm.distance(from,to,function (err, data) {
 							if(err) {
 								res.send(err);
@@ -40,8 +39,7 @@ var respond = function(from,to,req,res,next) {
 							return next();
 					});
 			} else {
-				console.log("Got from cache");
-				res.setHeader("Content-Type", "application/json");
+				res.setHeader("Content-Type", "application/json; charset=utf-8");
 				res.write(data);
 				res.end();
 				return next();
